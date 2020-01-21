@@ -1,6 +1,6 @@
 package com.ep.registersv;
 
-import com.ep.registersv.model.RegisterModel;
+import com.ep.registersv.model.MessageModel;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +28,12 @@ public class RegisterSvApplication {
 	}
 
 	@Bean
-	public KafkaTemplate<String, RegisterModel> kafkaTemplate(){
+	public KafkaTemplate<String, MessageModel> kafkaTemplate(){
 		return new KafkaTemplate<>(producerFactory());
 	}
 
 	@Bean
-	public ProducerFactory<String, RegisterModel> producerFactory(){
+	public ProducerFactory<String, MessageModel> producerFactory(){
 		return new DefaultKafkaProducerFactory<>(properties());
 	}
 

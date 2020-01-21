@@ -1,25 +1,22 @@
 package com.ep.registersv.controller;
 
-import com.ep.registersv.model.RegisterModel;
-import com.ep.registersv.model.UserInfo;
-import com.ep.registersv.producer.RegisterProducer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.ep.registersv.model.MessageModel;
+import com.ep.registersv.model.RegisterResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
+@RequestMapping("/register")
 public class RegisterController {
 
-    @Autowired
-    private RegisterProducer registerProducer;
-
-    @GetMapping("/test/{name}")
-    public String testMessage(@PathVariable("name") String name) {
-        RegisterModel registerModel = new RegisterModel();
-        registerModel.setUserInfo(new UserInfo("Kritchat", "Rojanaphruk"));
-        registerProducer.produce(registerModel);
-        return "worked";
+    @PostMapping
+    public ResponseEntity<RegisterResponse> register(@Valid @RequestBody MessageModel messageModel) {
+        return ResponseEntity.ok(new RegisterResponse());
     }
 
 }

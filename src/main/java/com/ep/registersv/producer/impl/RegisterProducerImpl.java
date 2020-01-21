@@ -1,6 +1,6 @@
 package com.ep.registersv.producer.impl;
 
-import com.ep.registersv.model.RegisterModel;
+import com.ep.registersv.model.MessageModel;
 import com.ep.registersv.producer.RegisterProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ import java.util.Objects;
 public class RegisterProducerImpl implements RegisterProducer {
 
     @Autowired
-    private KafkaTemplate<String, RegisterModel> kafkaTemplate;
+    private KafkaTemplate<String, MessageModel> kafkaTemplate;
     @Autowired
     private Environment environment;
 
     @Override
-    public void produce(RegisterModel message) {
+    public void produce(MessageModel message) {
         try {
-            ListenableFuture<SendResult<String, RegisterModel>> send = kafkaTemplate.send(Objects.requireNonNull(environment.getProperty("config.kafka.topic")), message);
+            ListenableFuture<SendResult<String, MessageModel>> send = kafkaTemplate.send(Objects.requireNonNull(environment.getProperty("config.kafka.topic")), message);
             send.addCallback(new ListenableFutureCallback<>() {
 
                 @Override
@@ -34,7 +34,7 @@ public class RegisterProducerImpl implements RegisterProducer {
                 }
 
                 @Override
-                public void onSuccess(SendResult<String, RegisterModel> result) {
+                public void onSuccess(SendResult<String, MessageModel> result) {
                     log.info("sent message='{}' with offset={}", message,
                             result.getRecordMetadata().offset());
                 }
