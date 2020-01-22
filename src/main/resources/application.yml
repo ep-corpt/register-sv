@@ -2,9 +2,16 @@ spring:
   application:
     name: register-sv
   kafka:
-    bootstrap-servers: 127.0.0.1:32769
-    consumer:
-      group-id: test1
+    bootstrap-servers: 127.0.0.1:32768
+  datasource:
+    url: jdbc:postgresql://192.168.1.45:5432/credential
+    username: postgres
+    password: 055090323
+    driverClassName: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 server:
   port: 9001
@@ -13,7 +20,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8762/eureka/
-
 
 config:
   kafka:
