@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import static com.ep.registersv.constant.MessageConstant.REGISTER_SUCCESSFULLY;
+import static com.ep.registersv.constant.MessageConstant.STATUS_SUCCESS;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterResponse {
-    private String statusCode = "00000";
-    private String description = "Register Successfully";
+    private String statusCode = STATUS_SUCCESS;
+    private String description = REGISTER_SUCCESSFULLY;
 }

@@ -1,8 +1,8 @@
 package com.ep.registersv.service;
 
-import com.ep.registersv.model.RegisterResponse;
-import org.springframework.http.ResponseEntity;
+import com.ep.registersv.common.RegisterException;
+import com.ep.registersv.model.MessageModel;
 
 public interface RegisterService {
-    ResponseEntity<RegisterResponse> execute();
+    void validateDuplicateData(MessageModel messageModel) throws RegisterException;
 }

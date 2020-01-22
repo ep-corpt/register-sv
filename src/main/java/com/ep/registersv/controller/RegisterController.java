@@ -1,7 +1,10 @@
 package com.ep.registersv.controller;
 
+import com.ep.registersv.common.RegisterException;
 import com.ep.registersv.model.MessageModel;
 import com.ep.registersv.model.RegisterResponse;
+import com.ep.registersv.task.RegisterServiceTask;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("/register")
 public class RegisterController {
 
+    @Autowired
+    private RegisterServiceTask registerServiceTask;
+
     @PostMapping
-    public ResponseEntity<RegisterResponse> register(@Valid @RequestBody MessageModel messageModel) {
-        return ResponseEntity.ok(new RegisterResponse());
+    public ResponseEntity<RegisterResponse> register(@Valid @RequestBody MessageModel messageModel) throws RegisterException {
+        return registerServiceTask.execute(messageModel);
     }
 
 }

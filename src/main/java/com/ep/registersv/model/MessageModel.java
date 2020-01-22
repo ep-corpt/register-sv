@@ -8,12 +8,12 @@ import javax.validation.constraints.NotNull;
 @Data
 public class MessageModel {
     @Valid
-    @NotNull(message = "User Information is required")
-    private UserInfo userInfo;
+    @NotNull(message = "User Detail is required")
+    private UserDetail userDetail;
     @Valid
-    @NotNull(message = "Company Information is required")
-    private CompanyInfo companyInfo;
+    @NotNull(message = "Company Detail is required")
+    private CompanyDetail companyDetail;
     @Valid
-    @NotNull(message = "Credential Information is required")
-    private CredentialInfo credentialInfo;
+    @NotNull(message = "Credential Detail is required")
+    private CredentialDetail credentialDetail;
 }
