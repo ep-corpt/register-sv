@@ -30,8 +30,7 @@ public class RegisterProducerImpl implements RegisterProducer {
     public void produce(MessageModel message) throws RegisterException {
         try {
             ListenableFuture<SendResult<String, MessageModel>> send = kafkaTemplate.send(Objects.requireNonNull(environment.getProperty("config.kafka.topic")), message);
-            send.addCallback(new ListenableFutureCallback<>() {
-
+            send.addCallback(new ListenableFutureCallback<SendResult<String, MessageModel>>() {
                 @Override
                 public void onFailure(Throwable throwable) {
                     log.error("Exception", throwable);
