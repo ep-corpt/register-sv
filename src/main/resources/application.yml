@@ -24,3 +24,8 @@ eureka:
 config:
   kafka:
     topic: comp_info
+
+management:
+  endpoints:
+    web:
+      base-path: /
