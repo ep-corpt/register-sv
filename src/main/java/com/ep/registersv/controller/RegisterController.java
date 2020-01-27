@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/register")
+@RequestMapping
 public class RegisterController {
 
     @Autowired
     private RegisterServiceTask registerServiceTask;
 
-    @PostMapping
+    @PostMapping(value = "/create")
     public ResponseEntity<RegisterResponse> register(@Valid @RequestBody MessageModel messageModel) throws RegisterException {
         return registerServiceTask.execute(messageModel);
     }
