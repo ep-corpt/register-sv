@@ -12,5 +12,5 @@ import static com.ep.registersv.constant.MessageConstant.STATUS_SUCCESS;
 @AllArgsConstructor
 public class RegisterResponse {
     private String statusCode = STATUS_SUCCESS;
-    private String description = REGISTER_SUCCESSFULLY;
+    private String statusDesc = REGISTER_SUCCESSFULLY;
 }
