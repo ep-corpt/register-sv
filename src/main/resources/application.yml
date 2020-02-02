@@ -1,4 +1,5 @@
 spring:
+  profiles: dev
   application:
     name: register-sv
   kafka:
@@ -24,6 +25,7 @@ eureka:
 config:
   kafka:
     topic: comp_info
+  log-path: /home/rkritchat/Desktop/ep-corpt/logs
 
 management:
   endpoints:
